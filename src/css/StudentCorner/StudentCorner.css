@@ -1,0 +1,17 @@
+.studentCorner_container{
+    margin-top: 48%;
+    background-color: rgb(204, 207, 211);
+}
+.Card_container{
+    padding: 2%;
+    max-width: 100%;
+    background-color: rgb(250, 244, 237);
+}
+
+.studentCorner_container h1{
+    text-decoration: underline;
+    padding-top: 20px;
+    margin: 20px;
+    color: black;
+
+}

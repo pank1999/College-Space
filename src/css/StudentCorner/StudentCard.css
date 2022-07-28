@@ -1,0 +1,35 @@
+.studentCard_container{
+ margin-left: 10%;
+ margin-top: 5%;
+ box-shadow: 0px 0px 3px 5px rgb(248, 213, 213);
+ padding: 50px;
+ border-radius: 10px;
+}
+.studentCard_container:hover{
+   transform: scale(1.05);
+   background-color: white;
+}
+
+.img-container{
+    border-radius: 100%;
+    background-color: rgb(252, 110, 110);
+    height: 150px;
+    width: 150px;
+    align-items: center;
+}
+.img-container img
+{    margin-left: 10px;
+    margin-top: 10px;
+    height: 130px;
+    border-radius: 100%;
+    width: 130px;
+    
+}
+.button-container button{
+    height: 40px;
+    width: 150px;
+    background-color: rgb(46, 133, 214);
+    color: white;
+    cursor: pointer;
+    border: none;
+}

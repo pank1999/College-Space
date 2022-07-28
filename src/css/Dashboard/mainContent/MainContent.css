@@ -1,0 +1,18 @@
+.table{
+    table-layout: auto;
+    align-content: center;
+    border: 1px solid black;
+    margin-left: 0%;
+    margin-top: 10%;
+    width: 100%;
+}
+
+
+td{
+    padding: 10px;
+    border: 1px solid black;
+}
+td:hover{
+    background-color: #e05905;
+    color: white;
+}

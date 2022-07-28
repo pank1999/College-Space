@@ -1,0 +1,50 @@
+.header{
+    background-color: rgb(255, 255, 255);
+    height: 50px;
+    width: 100%;
+    display: flex;
+    box-shadow: 0 4px 6px 0 rgba(61, 61, 61, 0.2), 0 6px 10px 0 rgba(53, 52, 52, 0.19);
+     justify-content: space-between;
+    position: fixed;
+}
+
+.header h2{
+    text-align: center;
+    width: max-content;
+    padding-top: 10px;
+}
+.Heading{
+    text-align: center;
+    margin-left: 35%;
+}
+
+
+.Logout{
+    float: right;
+    padding-top: 10px;
+    padding-left: 35%;
+}
+
+
+.icons{
+    display:flex;
+    align-items: center;
+}
+.Notification{
+    display: flex;
+    position: relative;
+    padding-top:2px;
+}
+.NotificationSpan{
+    top:0;
+    margin-right:30px;
+    height: 20px;
+    width:20px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgb(0, 149, 255);
+    color:rgb(255, 255, 255);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

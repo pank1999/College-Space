@@ -1,0 +1,28 @@
+
+.videoDemoHeading{
+    align-items: center;
+    margin-top: 10%;
+    color: white;
+    margin-left: 5%;
+   
+    
+}
+.highlightParagraph{
+    font-size: 22px;
+    margin: 20%;
+}
+.videoDemo{
+    display:flex;
+}
+.leftVideoDemo{
+    background-color: rgb(145, 154, 166);
+    height: 91vh;
+    width:45%;
+}
+.rightVideoDemo{
+    background-image: url("../../images/videodemogif.gif");
+    background-color:rgb(81, 154, 250);
+    height: 91vh;
+    padding-left: 58%;
+    background-repeat: no-repeat;
+}

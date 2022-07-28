@@ -1,0 +1,41 @@
+.NotesCard{
+    height:250px;
+    width: 250px;
+    padding: 10px;
+    background-color: rgb(240, 208, 28);
+    margin: 30px;
+    box-shadow: 0 4px 6px 0 rgba(61, 61, 61, 0.2), 0 6px 10px 0 rgba(53, 52, 52, 0.19);
+    align-items: center;
+    background-image: url(../../../../images/notesimg1.png); 
+    background-repeat: no-repeat;
+    background-size: cover;   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.NotesSubject{
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+.DownloadAndView{
+    display: flex;
+    padding-top: 30px;
+    justify-content: space-between;
+    width: 100%;
+}
+.DownloadAndView i:last-child{
+    font-size: 20px;
+    padding-left: 20px;
+    cursor: pointer;
+    color: rgb(8, 108, 170);
+}
+.DownloadAndView i:first-child{
+    font-size: 20px;
+    cursor: pointer;
+    color: darkcyan;
+     
+}

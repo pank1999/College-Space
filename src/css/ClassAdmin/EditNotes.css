@@ -1,0 +1,42 @@
+.container{
+    box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+    
+}
+.form-container{
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-left: 35%;
+   
+}
+.form-element input,select{
+   width:50%;
+   font-size: 18px;
+   padding: 5px;
+   height: 40px;
+   border: none;
+   border-radius: 5px;
+   box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+}
+
+.form-element{
+    margin-bottom: 20px;
+}
+.form-element button{
+    background-color: rgb(5, 130, 233);
+    height: 50px;
+    width: 150px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: 15%;
+
+}
+.form-element label{
+    font-size: 20px;
+    font-weight: bold;
+}
+.form-element:last-child{
+    margin-bottom: 0px;
+    padding-bottom: 50px;
+}

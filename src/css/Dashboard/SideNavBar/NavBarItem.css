@@ -1,0 +1,15 @@
+.NavItem{
+    display: flex;
+    height: 30px;
+    width: 80%;
+    color: white;
+    border-bottom:2px solid black ;
+    margin-top: 10%;
+    padding-left: 15%;
+    margin-left: 10%;
+    padding-bottom: 15%;
+}
+.linkItem{
+    color: white;
+  }
+
