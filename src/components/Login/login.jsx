@@ -2,52 +2,43 @@ import React, { useState }  from "react";
 import "../../css/Login.css";
 import {Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../redux/apicalls';
 
 
-import axios from "axios";
 
 
-function Login({setUserLogin}){
+function Login(){
 
-  const [user,setUser]=useState({
-    email:"",
-    password:""          
-  });
+  const [userEmail,setUserEmail]=useState("");
+  
+  const [userPassword,setUserPassword]=useState("");
 
+      const dispatch=useDispatch();
+      const {isFetching,error}=useSelector((state)=>state.user);
   //const history=useHistory();
 
   const navigate=useNavigate();
   
 
   function handleSubmit(e){
-    e.preventDefault();
-      const {name,value}=e.target;
-      setUser({
-        ...user,
-        [name]:value
-      });
+      e.preventDefault();
+      login(dispatch,{userEmail,userPassword});
+  
       
-      try{
-        console.log("dsdg")     
-        axios.post("/Login",{email:"pankaj@gmail.com",password:'123456'}).then((res)=>{
-          console.log("data") 
-          console.log(res);
-          setUserLogin(res.data);
-          navigate("/Dashboard");
-        });
-      }catch(err){
-         console.log(err);
-      }
+      // try{   
+      //   axios.post("/api/Login",{email:userEmail,password:userPassword}).then((res)=>{
+      //     console.log("data") 
+      //     console.log(res);
+      //    // console.log(res.data.userLogin);
+      //     setUserLogin(res.data.userLogin);
+      //     navigate("/Dashboard/MainContent/");
+      //   });
+      // }catch(err){
+      //    console.log(err);
+      // }
   }
        
-      // axios.post("/Login",user).then(
-      // res=>{
-      //    console.log(res.data.user);
-      //    setUserLogin(res.data.user);
-      //    
-      // }
-    //);
- 
   
 
   
@@ -80,18 +71,18 @@ function Login({setUserLogin}){
           <div class="center">
           <form onSubmit={handleSubmit}>
             <div class="txt_field">
-              <input type="text" onChange={setUser} name="email" value={user.email} required />
+              <input type="text" onChange={(e)=>{setUserEmail(e.target.value)}}  value={userEmail}  />
               <span></span>
               <label for="">username</label>
             </div>
             <div class="txt_field">
-              <input type="password" onChange={setUser} name="password" value={user.password} required />
+              <input type="password" onChange={(e)=>{setUserPassword(e.target.value)}}  value={userPassword} />
               <span></span>
               <label for="">password</label>
             </div>
             
             <div class="pass">forget password</div>
-            <input type="submit"  value="login" />
+            <input type="submit"  disabled={isFetching} value="login" />
             <div class="signup_link">
               Not a member? <Link to="/Signup">signup</Link>
             </div>

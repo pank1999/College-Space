@@ -9,13 +9,17 @@ function SideNavbar(props){
     function hadleClick(){
             console.log("i am click");
             setHideShow(!hideShow);
+           // console.log(props.userLogin);
       }
     
     return(
        <div className="sideNavbar"  style={ hideShow? {width:"300px"}:{width:"100px"}}>
            
            <div className="DashboardTop">
-                <span className="DashboardTitle"> {hideShow?"Dashboard": ""}</span>
+                {
+                  props.ClassAdmin?<span className="DashboardTitle"> {hideShow?"Admin Dashboard": "CS-1"}</span>:<span className="DashboardTitle"> {hideShow?"Dashboard": ""}</span>
+                }
+              
                 <button  onClick={hadleClick}><i class={hideShow?"bi bi-x":"bi bi-chevron-double-right"}  style={{fontSize:"25px",color:"white",cursor:"pointer"}}></i></button> 
             </div>
             

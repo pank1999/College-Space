@@ -1,13 +1,17 @@
 const express=require("express");
-const bodyParser=require("body-parser");
-const { urlencoded } = require("body-parser");
-const mongoose=require("mongoose");
-const bcrypt=require("bcrypt");
-const https=require('https');
+
 const cors=require("cors");
+const {Signup} =require('./models/User');
+const userRouter = require("./routes/User");
+const authRoute=require("./routes/Auth");
+const dotenv = require('dotenv');
+const multer=require("multer");
+const mongoose=require("mongoose");
 
 
-mongoose.connect("mongodb+srv://pankaj:pank1999@cluster0.hjqbxca.mongodb.net/collegeSpace?retryWrites=true&w=majority",(err)=>{
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_URL,(err)=>{
   if(err){
     console.log(err);
   }
@@ -15,7 +19,7 @@ mongoose.connect("mongodb+srv://pankaj:pank1999@cluster0.hjqbxca.mongodb.net/col
     console.log("connetion successful");
   }
 });
-//const multer=require("multer");
+
 //const GridFsStorage=require("multer-gridfs-storage");
 //const Grid=require("gridfs-stream");
 
@@ -45,108 +49,14 @@ const storage = new GridFsStorage({
 
 */
 
-//signup schema
-
-
-const signupSchema=new mongoose.Schema({
-                   name:String,
-                   rollNumber:String,
-                   email:String,
-                   password:String,
-                   confirmPassword:String
-                  });
-
-//signup model
-
-const Signup=mongoose.model("Signup",signupSchema);
-
-
-
 
 const app=express();
+
+
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 
-app.post("/signup",(req,res)=>{
-    console.log('submit');
-    console.log(req.body);
-    const password=req.body.password;
-    
-    bcrypt.hash(password,10).then((hashpassword)=>{    
-      const signup= new Signup({
-        name:req.body.name,
-        rollNumber:req.body.rollNumber,
-        email:req.body.email,
-        password:hashpassword
-       });
-       console.log("success");
-       signup.save();
-       res.send({success:"user registered successful"});
-      });
-     
-
-});
-
-
-//Login post req
-app.post("/Login",(req,res)=>{
-    const {email,password}=req.body;
-    console.log(req.body);
-    Signup.findOne({email:email},(err,userLogin)=>{
-        if(err){
-            console.log(err);
-        }
-        else{
-            console.log(userLogin);
-            //console.log("not found");
-            
-            if(bcrypt.compare(password,userLogin.password)){
-              console.log("found");
-              res.send(userLogin);     
-            }
-        }
-    });
-   
-    
-});
-
-//Edit Timetable Post req
-app.post("/EditTimeTable",(req,res)=>{
-
-
-});
-
-//Upload Video Lectures
-app.post("/UploadVideoLectures",(req,res)=>{
-
-
-});
-
-//Upload Notes
-app.post("/UploadNotes",(req,res)=>{
-
-
-});
-
-//Upload Result
-app.post("/UploadResut",(req,res)=>{
-
-
-});
-
-//Upload Syllabus
-/*
-app.post("/UploadSyllabus",upload.single(req.body),(req,res)=>{
-    const SyllabusData=req.body;
-    console.log(SyllabusData);
-   // console.log(sem);
-   res.json({Syllbus:req.body});
-    console.log("Syllabus Data Recived");
-});
-*/
-
-
+app.use("/api",authRoute);
 
 
 app.get("/",(req,res)=>{

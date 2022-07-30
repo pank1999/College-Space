@@ -3,6 +3,9 @@ import Dashboard from './studentDashboard/Dashboard';
 import Login from './Login/login';
 import Signup from './signup/signup';
 import {Route,Routes,useRoutes} from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import Home from './Home/Home';
 
 import ClassTeacherAdmin from './ClassTeacherAdmin/ClassTeacherAdmin';
@@ -25,17 +28,19 @@ import ClassTeacherMainContent from './ClassTeacherAdmin/ClassTeacherMainContent
 
 function App(){
 
-  const [userLogin,setUserLogin]=useState({});
+  //const [userLogin,setUserLogin]=useState({});
+  const userLoggedIn=useSelector((state)=>state.user.currentUser);
+  const navigate=useNavigate();
 
     return(
 
        <Routes>
            <Route path='/' element={<Home />} />
-           <Route path='/Login' element={<Login  setUserLogin={setUserLogin} />}/>
-           <Route  path='/Signup' element={ userLogin && userLogin._id ? <Dashboard /> : <Signup />} />
-           <Route exact path='/Dashboard' userLogin={userLogin} element={<Dashboard />}>
-           <Route exact path='/Dashboard/MainContent' element={<MainContent/> }>
-                    <Route  path='/Dashboard/MainContent/TimeTable' element={<TimeTable />}  />
+           <Route path='/Login' element={ userLoggedIn? <Dashboard /> :<Login   />}/>
+           <Route  path='/Signup' element={ userLoggedIn && userLoggedIn._id ? <Dashboard  /> : <Signup />} />
+           <Route exact path='/Dashboard'  element={<Dashboard />}>
+           <Route exact path='/Dashboard/MainContent'  element={<MainContent/> }>
+                    <Route  path='/Dashboard/MainContent/TimeTable'  element={<TimeTable />}  />
                         <Route exact path='/Dashboard/MainContent/VideoLectures' element={<VideoLectures />}  />
                         <Route exact path='/Dashboard/MainContent/Syllabus' element={<Syllabus />}  />
                         <Route exact path='/Dashboard/MainContent/Notes' element={<Notes />}  />
